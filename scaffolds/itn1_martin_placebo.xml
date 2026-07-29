@@ -1,0 +1,136 @@
+ <!--Setting: Martin et. al -->
+<human>
+  <!-- actual mechanistic components but naming as ITN for cohort tracking-->
+  <component id="Placebo" name="Placebo">
+    <GVI>
+      <decay L="2.3y" k="1.6" function="weibull"/>
+      <anophelesParams mosquito="gambiaesl_indoor" propActive="1">
+        <deterrency value="0.0"/>
+        <preprandialKillingEffect value="0"/>
+        <postprandialKillingEffect value="0"/>
+      </anophelesParams>
+      <anophelesParams mosquito="gambiaesl_outdoor" propActive="0">
+        <deterrency value="0"/>
+        <preprandialKillingEffect value="0.0"/>
+        <postprandialKillingEffect value="0"/>
+      </anophelesParams>
+    </GVI>
+    <subPopRemoval afterYears="3"/>
+  </component>
+  <component id="itn_deterency" name="itn">
+    <GVI>
+      <decay L="2.3y" k="1.6" function="weibull"/>
+      <anophelesParams mosquito="gambiaesl_indoor" propActive="1">
+        <deterrency value="0.37"/>
+        <preprandialKillingEffect value="0"/>
+        <postprandialKillingEffect value="0"/>
+      </anophelesParams>
+      <anophelesParams mosquito="gambiaesl_outdoor" propActive="0">
+        <deterrency value="0"/>
+        <preprandialKillingEffect value="0.0"/>
+        <postprandialKillingEffect value="0"/>
+      </anophelesParams>
+    </GVI>
+    <subPopRemoval afterYears="3"/>
+  </component>
+  <component id="futPYR_BIT103_preprandial" name="itn">
+    <GVI>
+      <decay L="2.3y" k="1.6" function="weibull"/>
+      <anophelesParams mosquito="gambiaesl_indoor" propActive="1">
+        <deterrency value="0"/>
+        <preprandialKillingEffect value="0.08"/>
+        <postprandialKillingEffect value="0"/>
+      </anophelesParams>
+      <anophelesParams mosquito="gambiaesl_outdoor" propActive="0">
+        <deterrency value="0"/>
+        <preprandialKillingEffect value="0.0"/>
+        <postprandialKillingEffect value="0"/>
+      </anophelesParams>
+    </GVI>
+  </component>
+  <component id="futPYR_BIT103_postprandial" name="itn">
+    <GVI>
+      <decay L="2.3y" k="1.6" function="weibull"/>
+      <anophelesParams mosquito="gambiaesl_indoor" propActive="1">
+        <deterrency value="0"/>
+        <preprandialKillingEffect value="0"/>
+        <postprandialKillingEffect value="0.05"/>
+      </anophelesParams>
+      <anophelesParams mosquito="gambiaesl_outdoor" propActive="0">
+        <deterrency value="0"/>
+        <preprandialKillingEffect value="0.0"/>
+        <postprandialKillingEffect value="0"/>
+      </anophelesParams>
+    </GVI>
+  </component>
+  <component id="futIG2_BIT103_deterrency" name="itn2">
+      <GVI>
+        <decay L="2.4y" k="2.4" function="weibull"/>
+        <anophelesParams mosquito="gambiaesl_indoor" propActive="1">
+          <deterrency value="0.19"/>
+          <preprandialKillingEffect value="0"/>
+          <postprandialKillingEffect value="0"/>
+        </anophelesParams>
+        <anophelesParams mosquito="gambiaesl_outdoor" propActive="0">
+          <deterrency value="0"/>
+          <preprandialKillingEffect value="0.0"/>
+          <postprandialKillingEffect value="0"/>
+        </anophelesParams>
+      </GVI>
+    </component>
+  <component id="futIG2_BIT103_preprandial" name="itn2">
+      <GVI>
+        <decay L="1.3y" k="1.8" function="weibull"/>
+        <anophelesParams mosquito="gambiaesl_indoor" propActive="1">
+          <deterrency value="0"/>
+          <preprandialKillingEffect value="0.41"/>
+          <postprandialKillingEffect value="0"/>
+        </anophelesParams>
+        <anophelesParams mosquito="gambiaesl_outdoor" propActive="0">
+          <deterrency value="0"/>
+          <preprandialKillingEffect value="0.0"/>
+          <postprandialKillingEffect value="0"/>
+        </anophelesParams>
+      </GVI>
+    </component>
+  <component id="futIG2_BIT103_postprandial" name="itn2">
+      <GVI>
+        <decay L="1.8y" k="1.9" function="weibull"/>
+        <anophelesParams mosquito="gambiaesl_indoor" propActive="1">
+          <deterrency value="0"/>
+          <preprandialKillingEffect value="0"/>
+          <postprandialKillingEffect value="0.42"/>
+        </anophelesParams>
+        <anophelesParams mosquito="gambiaesl_outdoor" propActive="0">
+          <deterrency value="0"/>
+          <preprandialKillingEffect value="0.0"/>
+          <postprandialKillingEffect value="0"/>
+        </anophelesParams>
+      </GVI>
+    </component>
+  <!-- deployments -->
+  <deployment name="itn">
+    <!--ITN component futPYR_BIT103_deterrency, kept itn for cohort tracking -->
+    <component id="itn_deterency"/>
+    <component id="futPYR_BIT103_preprandial"/>
+    <component id="futPYR_BIT103_postprandial"/>
+    <timed>
+      <deploy coverage="@coverage@" time="2001-01-01" repeatStep="@deployment_frequency@y" repeatEnd="2002-01-01"/>
+    </timed>
+  </deployment>
+  <deployment name="Placebo">
+    <component id="Placebo"/>
+    <timed>
+      <restrictToSubPop id="itn_deterency" complement="true"/>
+      <deploy coverage="1" time="2001-01-06"/>
+    </timed>
+  </deployment>
+  <deployment name="itn2">
+      <component id="futIG2_BIT103_deterrency"/>
+      <component id="futIG2_BIT103_preprandial"/>
+      <component id="futIG2_BIT103_postprandial"/>
+    <continuous>
+      <deploy coverage="0.75" targetAgeYrs="0.75" begin="2001-01-06"/> 
+    </continuous>
+  </deployment>
+</human>
