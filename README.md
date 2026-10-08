@@ -6,7 +6,7 @@ Authors: Thiery Masserey¹ ², Swapnoleena Sen¹ ², Neil Hobbs³, Clara Champag
 ¹ Swiss Tropical and Public Health Institute (Swiss TPH), Allschwil, Switzerland
 ² University of Basel, Basel, Switzerland
 ³ Liverpool School of Tropical Medicine, Liverpool, United Kingdom
-Correspondence: Prof. Nakul Chitnis (nakul.chitnis@unibas.ch)
+Correspondence: Dr Thiery Masserey (thiery.masserey@swisstph.ch)
 
 ---
 
