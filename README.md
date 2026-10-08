@@ -48,7 +48,7 @@ This folder contains the scripts used to generate the OpenMalaria simulations.
 
 # Results and visualisation
 
-The processed simulation outputs and the scripts used to generate the figures presented in the manuscript are provided in the corresponding data and visualization repository at : X
+The processed simulation outputs and the scripts used to generate the figures presented in the manuscript are provided in the corresponding data and visualization repository at : https://zenodo.org/records/23241406
 
 ---
 
